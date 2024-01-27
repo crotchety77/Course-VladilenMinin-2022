@@ -16,3 +16,35 @@ number = goals.indexOf(numberOfGoals);
 
 console.log(`Самый результативный матч был под номером в ${number+1}. в нём было забито ${numberOfGoals} гол(ов).`);
 
+// Самые нерезультативные игры. В массиве нужно найти все самые
+// нерезультативные игры (все матчи, у которых количество голов между собой
+// совпадает и является минимальным). В данном массиве goals это будут 2 матча
+// под номерами 2 и 3 с количеством голов по 1. Выведите через alert сообщение
+// “Самые нерезультативные матчи были под номерами numbers. В каждом из них
+// было забито по numberOfGoals мячу(а).” (замените numbers на порядковые номера
+// матчей и отобразите их через запятую, а numberOfGoals - на количество голов в
+// самом нерезультативном матче). Не берите в учет игры с автоматическим
+// поражением.
+
+// let minGoals = [];
+
+// numberOfGoals = Math.min(...goals);
+
+
+
+let minNumber = goals[0];
+
+goals.forEach((goal, index) => {
+    if (goal < minNumber && goal >= 0) {
+        minNumber = goal;
+    }
+});
+console.log(minNumber);
+
+const minNumberOfGoals = goals
+.map((number, index) => number === minNumber ? index + 1 : -1) //[-1, 2, 3, -1, -1, -1, -1]
+.filter((goal) => goal > 0); // 
+
+
+console.log(minNumberOfGoals);
+
