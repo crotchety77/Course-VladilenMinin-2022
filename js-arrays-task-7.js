@@ -31,7 +31,7 @@ console.log(`Самый результативный матч был под но
 // numberOfGoals = Math.min(...goals);
 
 
-
+// 7.2
 let minNumber = goals[0];
 
 goals.forEach((goal, index) => {
@@ -39,12 +39,35 @@ goals.forEach((goal, index) => {
         minNumber = goal;
     }
 });
-console.log(minNumber);
 
 const minNumberOfGoals = goals
-.map((number, index) => number === minNumber ? index + 1 : -1) //[-1, 2, 3, -1, -1, -1, -1]
-.filter((goal) => goal > 0); // 
+.map((number, index) => number === minNumber ? index + 1 : -1) // [-1, 2, 3, -1, -1, -1, -1]
+.filter((goal) => goal > 0); // [2, 3]
+console.log(`Самые нерезультативные матчи были под номерами ${minNumberOfGoals.join(", ")}. В каждом из них было забито по ${minNumber} мячу(а).`);
 
+// 7.3
+// Общее количество голов за сезон. Не берите в учет игры с автоматическим
+// поражением. Выведите сообщение через alert “Общее количество голов за сезон
+// равно numberOfGoals” (замените numberOfGoals на число общее количества голов
+// за сезон).
 
-console.log(minNumberOfGoals);
+// Через reduce не вышло, т.к. надо ставить условие goal > 0, а он хавает -1.
+// const sumGoals = goals.reduce(function (currentSum, currentNumber) {
+//   if (currentNumber > 0){
+//   return currentSum + currentNumber
+//   }
+// }, 0);
 
+// Моё решение
+// let sumGoals = 0;
+// goals.forEach((goal, index) => {
+//   if (goal >= 0) {
+//    sumGoals += goal;
+//   }
+// });
+
+const sumGoals = goals.reduce((acc, goalNumber) => {
+  return goalNumber >= 0 ? acc + goalNumber : acc;
+}, 0);
+
+console.log(`Общее количество голов за сезон равно ${sumGoals}`);
