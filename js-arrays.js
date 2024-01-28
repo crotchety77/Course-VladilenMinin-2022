@@ -1,66 +1,55 @@
-const goals = [8, 1, 1, 3, 2, -1, 5];
+// Методы массивов
+// Splice Цель удалить элементы из массива и вставить другие
+// 1.Splice Цель удалить элементы из массива и вставить другие
 
-// 1. Самый результативный матч по количеству голов. Выведите в модальном окне
-// через alert сообщение “Самый результативный матч был под номером number. В
-// нем было забито numberOfGoals гол(ов).” (замените number на порядковый номер
-// матча, а numberOfGoals - на количество голов в самом результативном матче).
-// Если самых результативных матчей несколько, то выведите первый из них.
+let lessons = ["Math", "AVS", "OS", "English"];
 
+// Slice Обрезка
+// 2.Slice Обрезка
+// Неизменяет текующий массив
 
-// Использование метода apply для нахождения минимального элемента в массиве считается
-// устаревшим с появлением оператора spread. Давайте посмотрим пример:
+let agesOfClients = [25, 32, 19, 40];
+let test = agesOfClients.slice(1,4);
 
-numberOfGoals = Math.max(...goals);
-// Нужно узнать что такое spread оператор.
-number = goals.indexOf(numberOfGoals);
+// 1, 3 -> [32, 19]
+console.log(agesOfClients.splice(1,3));
+console.log(test);
+// 1, 4 -> [32, 19, 40]
+// console.log(agesOfClients);
+// console.log(test);
 
-console.log(`Самый результативный матч был под номером в ${number+1}. в нём было забито ${numberOfGoals} гол(ов).`);
+// 3.indexOf
+// Существует ли в массиве значение?
 
-// Самые нерезультативные игры. В массиве нужно найти все самые
-// нерезультативные игры (все матчи, у которых количество голов между собой
-// совпадает и является минимальным). В данном массиве goals это будут 2 матча
-// под номерами 2 и 3 с количеством голов по 1. Выведите через alert сообщение
-// “Самые нерезультативные матчи были под номерами numbers. В каждом из них
-// было забито по numberOfGoals мячу(а).” (замените numbers на порядковые номера
-// матчей и отобразите их через запятую, а numberOfGoals - на количество голов в
-// самом нерезультативном матче). Не берите в учет игры с автоматическим
-// поражением.
+let food = ["Яблоко", "Манго", "Апельсин", "Дыня"];
 
-// let minGoals = [];
+// console.log(food.indexOf("Апельсин")); // 2
+// console.log(food.indexOf("Шоколад")); // -1
 
-// numberOfGoals = Math.min(...goals);
+// 4.includes
 
+let technologies = ["Html", "CSS", "JS"];
 
-// 7.2
-let minNumber = goals[0];
+// console.log(technologies.includes("Html")); // True
+// console.log(technologies.includes("Docker")); // False
 
-goals.forEach((goal, index) => {
-    if (goal < minNumber && goal >= 0) {
-        minNumber = goal;
-    }
-});
+// 5. split (метод строк) но мы можем использовать в массивах
 
-const minNumberOfGoals = goals
-.map((number, index) => number === minNumber ? index + 1 : -1) // [-1, 2, 3, -1, -1, -1, -1]
-.filter((goal) => goal > 0); // [2, 3]
-console.log(`Самые нерезультативные матчи были под номерами ${minNumberOfGoals.join(", ")}. В каждом из них было забито по ${minNumber} мячу(а).`);
+let list = "Кроссовки, джинсы, рюкзак, фотоаппарат";
+let listArray = list.split(", ");
+console.log(listArray);
 
-// 7.3
-// Общее количество голов за сезон. Не берите в учет игры с автоматическим
-// поражением. Выведите сообщение через alert “Общее количество голов за сезон
-// равно numberOfGoals” (замените numberOfGoals на число общее количества голов
-// за сезон).
+let string = "Кроссовка";
+console.log(string.split(""));
 
-let sumGoals1 = goals.reduce(function (currentSum, currentNumber) {
-    if (currentNumber > 0){
-  return currentSum + currentNumber
-    }
-}, 0)
+// 6. join объединение массива -> строка
 
-/* const sumGoals = {
-//   return goals.reduce(function(sum, record){
-//     if(record > 0) return sum + record; 
-//   }, 0);
-// } */
+let list2 = listArray.join("-");
+console.log(list2);
+// Кроссовки-джинсы-рюкзак-фотоаппарат
 
-console.log(sumGoals1);
+// 7. reverse
+
+// Изменяет текущий массив
+console.log(technologies.reverse());
+console.log(technologies);
