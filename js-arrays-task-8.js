@@ -11,20 +11,56 @@
 // возвращать ошибку в виде строки “Ошибка”.
 
 function getMathResult(expression){
-    expression[0]
-    let test2 = [">", "<", "=", "+", "-", "*", "/"];
-    // let isPresent = array.indexOf(numberToCheck) !== -1;
-    if (test2.includes(expression[1]) == false){
-        return(console.log('Ошибка в 2-ом значении'))
-    } 
-    expression[2]
+    if (expression.length < 3){
+        return(console.log('Ошибка в размере массива. Значений меньше 2-ух'));
+    }
+    if (expression.length >= 3){
+        let list = [];
+        let znak;
+        for (let i = 0; i < expression.length; i++) {
+            let cnt = 0;
+            if (isFinite(expression[i]) == true){
+                console.log(isFinite(expression[i]), expression[i]);
+                list[cnt] = expression[i];
+                cnt += 1;
+                console.log(cnt, expression[i]);
+                // console.log(cnt);
+                if (cnt == 3){
+                    break;
+                }
+            }
+            // if ([">", "<", "=", "+", "-", "*", "/"].includes(expression[i])){
+            //     znak = expression[i];
+            // }
+        }
+        console.log(list);
+        // console.log(list[0], list[1], znak);
+    }
 }
 
+//     // let isPresent = array.indexOf(numberToCheck) !== -1;
+//     if (test2.includes(expression[1]) == false){
+//         return(console.log('Ошибка в 2-ом значении'));
+
+//     } 
+//     expression[2];
+//     return 0;
+// }
+
+// isFinite('101') // true
+// Number.isFinite('123') // false
+// console.log(isFinite('101'));
+// console.log(Number.isFinite('101'));
+
+
 // Также учтите, что в массив expression иногда может быть передано больше 3-х
-// параметров, и это конечно же неверно. Но если все же такое было сделано, вам
+// параметров. Но если все же такое было сделано, вам
 // необходимо удалить лишние элементы в массиве, которые нельзя преобразовать к числу,
-// которые являются ложными. Если же длина массива expression меньше 3, то функция
+// которые являются ложными. 
+
+// Если же длина массива expression меньше 3, то функция
 // getMathResult должна возвращать ошибку в виде строки “Ошибка”.
+
 // Например, если expression был передан как данный массив:
 // ['100', 'hello', 'javascript', , 'help200', '+', 4]
 // то в итоге он должен быть преобразован к:
@@ -42,3 +78,4 @@ getMathResult(['5', '>', '10']); // false
 getMathResult(['5', '<', '10']); // true
 getMathResult(['1', '=', 1]); // true
 getMathResult(['1', '**', 1]); // 'Ошибка'
+getMathResult(['1', '**']); // 'Ошибка'
