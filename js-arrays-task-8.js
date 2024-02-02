@@ -48,34 +48,31 @@ function getMathResult(expression){
     if (list.length < 3){
         return(console.log('Ошибка в размере массива. Значений меньше 2-ух'));
     }
-
-    const operators = {
-        '+': (a, b) => a + b,
-        '-': (a, b) => a - b,
-        '*': (a, b) => a * b,
-        '/': (a, b) => a / b,
-        // Добавьте другие операторы по необходимости
-    };
-
+    n1 = Number(expression[0]);
+    n2 = Number(expression[2]);
+    znak = expression[1];
     console.log(list);
-
-
-        // console.log(list[0], list[1], znak);
-
+    switch (znak) {
+        case ">":
+            return console.log(n1 > n2);
+        case "<":
+            return console.log(n1 < n2);
+        case "=":
+            return console.log(n1 === n2);
+        case "+":
+            return console.log(n1 + n2);
+        case "-":
+            return console.log(n1 - n2);
+        case "*":
+            return console.log(n1 * n2);
+        case "/":
+            return console.log(n1 / n2);
+        default:
+            return "Ошибка";
+    }
 }
 
-function calculateArray(arr) {
-    const operators = {
-      '+': (a, b) => a + b,
-      '-': (a, b) => a - b,
-      '*': (a, b) => a * b,
-      '/': (a, b) => a / b,
-      // Добавьте другие операторы по необходимости
-    };
-}
-const myArray = [100, '+', 200];
-const result = calculateArray(myArray);
-console.log(result); // Выведет 300
+
 
 //     // let isPresent = array.indexOf(numberToCheck) !== -1;
 //     if (test2.includes(expression[1]) == false){
@@ -117,3 +114,4 @@ getMathResult(['5', '<', '10']); // true
 getMathResult(['1', '=', 1]); // true
 getMathResult(['1', '**', 1]); // 'Ошибка'
 getMathResult(['1', '**']); // 'Ошибка'
+
