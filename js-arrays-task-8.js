@@ -10,40 +10,72 @@
 // которого не существует в данной последовательности, то функция getMathResult должна
 // возвращать ошибку в виде строки “Ошибка”.
 
+getMathResult(['200', 300, "+"]); // [200, +, 500] // 700
 getMathResult(['200', '+', 300]); // 500
+getMathResult(['20', '-', '5']); // 15
 function getMathResult(expression){
     if (expression.length < 3){
         return(console.log('Ошибка в размере массива. Значений меньше 2-ух'));
     }
-    if (expression.length >= 3){
-        let list = [];
-        let znak;
-        let cnt = 0;
-        for (let i = 0; i < expression.length; i++) {
-            
-            if (isFinite(expression[i]) == true){
-                console.log(expression[i]);
-                // console.log(isFinite(expression[i]), expression[i]);
 
-                list.push(expression[i]);
-                console.log(list[cnt], cnt);
-                cnt++;
-                // console.log(cnt, list[cnt]);
-                // console.log(cnt);
-                // if (cnt == 3){
-                //     break;
-                // }
-                
-            }
-            // if ([">", "<", "=", "+", "-", "*", "/"].includes(expression[i])){
-            //     znak = expression[i];
-            // }
+
+    let list = [];
+    let n = 0;
+    for (let i = 0; i < expression.length; i++) {
+        
+        if (isFinite(expression[i]) == true){
+            // console.log(isFinite(expression[i]), expression[i]);
+            list.push(expression[i]);
+            n = i;
+            break;
         }
-        console.log(list);
+    }
+    for (let i = n; i < expression.length; i++) {
+        if ([">", "<", "=", "+", "-", "*", "/"].includes(expression[i])){
+            list.push(expression[i]);
+            n = i
+        }
+    }
+    for (let i = n; i < expression.length; i++) {
+        
+        if (isFinite(expression[i]) == true){
+            // console.log(isFinite(expression[i]), expression[i]);
+            list.push(expression[i]);
+            n = i;
+            break;
+        }
+    }
+    if (list.length < 3){
+        return(console.log('Ошибка в размере массива. Значений меньше 2-ух'));
+    }
+
+    const operators = {
+        '+': (a, b) => a + b,
+        '-': (a, b) => a - b,
+        '*': (a, b) => a * b,
+        '/': (a, b) => a / b,
+        // Добавьте другие операторы по необходимости
+    };
+
+    console.log(list);
+
 
         // console.log(list[0], list[1], znak);
-    }
+
 }
+
+function calculateArray(arr) {
+    const operators = {
+      '+': (a, b) => a + b,
+      '-': (a, b) => a - b,
+      '*': (a, b) => a * b,
+      '/': (a, b) => a / b,
+      // Добавьте другие операторы по необходимости
+    };
+}
+const myArray = [100, '+', 200];
+const result = calculateArray(myArray);
+console.log(result); // Выведет 300
 
 //     // let isPresent = array.indexOf(numberToCheck) !== -1;
 //     if (test2.includes(expression[1]) == false){
@@ -77,8 +109,7 @@ function getMathResult(expression){
 
 
 // Примеры результатов функции getMathResult:
-getMathResult(['200', '+', 300]); // 500
-getMathResult(['20', '-', '5']); // 15
+
 getMathResult([100, '/', 100]); // 1
 getMathResult([2, '-', 2]); // 0
 getMathResult(['5', '>', '10']); // false
