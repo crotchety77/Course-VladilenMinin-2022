@@ -10,6 +10,7 @@
 // которого не существует в данной последовательности, то функция getMathResult должна
 // возвращать ошибку в виде строки “Ошибка”.
 
+getMathResult(['200', '+', 300]); // 500
 function getMathResult(expression){
     if (expression.length < 3){
         return(console.log('Ошибка в размере массива. Значений меньше 2-ух'));
@@ -17,23 +18,29 @@ function getMathResult(expression){
     if (expression.length >= 3){
         let list = [];
         let znak;
+        let cnt = 0;
         for (let i = 0; i < expression.length; i++) {
-            let cnt = 0;
+            
             if (isFinite(expression[i]) == true){
-                console.log(isFinite(expression[i]), expression[i]);
-                list[cnt] = expression[i];
-                cnt += 1;
-                console.log(cnt, expression[i]);
+                console.log(expression[i]);
+                // console.log(isFinite(expression[i]), expression[i]);
+
+                list.push(expression[i]);
+                console.log(list[cnt], cnt);
+                cnt++;
+                // console.log(cnt, list[cnt]);
                 // console.log(cnt);
-                if (cnt == 3){
-                    break;
-                }
+                // if (cnt == 3){
+                //     break;
+                // }
+                
             }
             // if ([">", "<", "=", "+", "-", "*", "/"].includes(expression[i])){
             //     znak = expression[i];
             // }
         }
         console.log(list);
+
         // console.log(list[0], list[1], znak);
     }
 }
