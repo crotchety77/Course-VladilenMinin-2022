@@ -38,3 +38,5 @@ mob.health -= 2;
 // Удаление
 delete mob.dropLoot.loot;
 console.log(mob);
+
+console.log('attack' in mob); // true

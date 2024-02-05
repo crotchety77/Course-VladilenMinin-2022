@@ -55,26 +55,26 @@ function getTotalPriceOfShoppingBag(shoppingBag){
 
         return acc + totalProductPrice;
     }, 0);
+    return totalPrice;
+}
+    // let sum = 0;
+    // // console.log(groceries['Orange Juice']);
 
-    let sum = 0;
-    // console.log(groceries['Orange Juice']);
-
-    shoppingBag.forEach(item => {
-        // console.log(item.quantity, '-----', groceries[item.product]);
-        // console.log(groceries[item.product]['price']);
-        let money = ((item.quantity * groceries[item.product]['price']) * (1 - groceries[item.product]['discount']/100));
-        // if (item.product === groceries[item.product]){
-        //     console.log(1)
-        //     console.log(item.product);
-        // }
-        // console.log(item.quantity);
-        sum += money;
+    // shoppingBag.forEach(item => {
+    //     // console.log(item.quantity, '-----', groceries[item.product]);
+    //     // console.log(groceries[item.product]['price']);
+    //     let money = ((item.quantity * groceries[item.product]['price']) * (1 - groceries[item.product]['discount']/100));
+    //     // if (item.product === groceries[item.product]){
+    //     //     console.log(1)
+    //     //     console.log(item.product);
+    //     // }
+    //     // console.log(item.quantity);
+    //     sum += money;
         
-    });
+    // });
 
     
-    return sum.toFixed(2);
-}
+    // return sum.toFixed(2);
 
 const shoppingBag = [
     { product: 'Chocolate', quantity: 3 },
