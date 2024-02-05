@@ -1,0 +1,34 @@
+// 7 типов данных ПРИМИТИВЫ = 1 тип НЕ ПРИМИТИВ (ссылочный тип - Объект)
+
+
+
+
+const developer = {
+    name: 'Andrey',
+};
+
+let developerName = 'Maxim';
+
+let developerName1 = ['Maxim'];
+
+const setName = (entity, value) =>{
+    if (typeof entity === 'object'){
+        entity.name = value;
+    }
+    else{
+        // console.log(entity, value);
+
+        entity = value;
+        console.log(entity, value);
+
+        // Значение осталось без изменения
+    }
+}
+
+setName(developer, 'Ruslan');
+setName(developerName, 'Ruslan');
+setName(developerName1, 'Ruslan');
+
+console.log(developer);
+console.log(developerName);
+console.log(developerName1);
